@@ -1,1 +1,1 @@
-# stock-system-backend
+stock-system-graphql
