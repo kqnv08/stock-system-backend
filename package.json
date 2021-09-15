@@ -1,0 +1,43 @@
+{
+ "name": "stock-system-graphql",
+ "version": "0.1.0",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "env PORT=4001 gulp",
+  "ngrok": "ngrok http 4001"
+ },
+ "dependencies": {
+  "@merlin-gql/core": "0.0.10",
+  "apollo-server": "^2.21.0",
+  "bcryptjs": "^2.4.3",
+  "class-validator": "^0.13.1",
+  "cors": "^2.8.5",
+  "dayjs": "^1.10.7",
+  "express": "^4.17.1",
+  "graphql": "^15.5.3",
+  "jsonwebtoken": "^8.5.1",
+  "mysql2": "^2.3.0",
+  "node-fetch": "^2.6.1",
+  "pluralize": "^8.0.0",
+  "reflect-metadata": "^0.1.13",
+  "type-graphql": "^1.1.1",
+  "typeorm": "^0.2.37"
+ },
+ "devDependencies": {
+  "@types/bcryptjs": "^2.4.2",
+  "@types/jsonwebtoken": "^8.5.5",
+  "@types/node-fetch": "^2.5.12",
+  "gulp": "^4.0.2",
+  "gulp-cached": "^1.1.1",
+  "gulp-nodemon": "^2.5.0",
+  "gulp-relative-sourcemaps-source": "^1.1.1",
+  "gulp-sourcemaps": "^3.0.0",
+  "gulp-typescript": "^6.0.0-alpha.1",
+  "mocha": "^9.1.1",
+  "ngrok": "^4.2.2",
+  "nodemon": "^2.0.12",
+  "open": "^8.2.1",
+  "ts-node": "^10.2.1",
+  "typescript": "^4.4.3"
+ }
+}

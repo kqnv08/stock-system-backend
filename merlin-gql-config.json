@@ -1,0 +1,5 @@
+{
+  "resolverGenerators": [
+    "models/**/*.resolver-generator.{ts,js}"
+  ]
+}
