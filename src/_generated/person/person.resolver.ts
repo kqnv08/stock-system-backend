@@ -7,7 +7,6 @@ import { PersonSorts } from "./person.sort";
 
 const BaseListResolver = ListResolver(Person, PersonFilters, PersonSorts);
 @Resolver()
-@Secure()
 export class PersonListResolver extends BaseListResolver<Person, PersonFilters, PersonSorts> {}
 
 const BaseFindResolver = FindResolver(Person);

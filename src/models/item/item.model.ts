@@ -23,7 +23,7 @@ export class Item extends BaseModel {
   deletedDate: Date | null = null;
 
   @Column("int", { nullable: true })
-  stock?: number;
+  stock?: number = 0;
 
   @OneToMany(() => ItemPriceList, (itemPriceList) => itemPriceList.item, {
     lazy: true,

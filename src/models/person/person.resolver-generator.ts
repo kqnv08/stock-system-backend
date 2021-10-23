@@ -5,7 +5,7 @@ import { Person } from "./person.model";
 
 @MerlinGQLResolver([
     { type: "FIND", secure: true, roles: ["admin"] },
-    { type: "LIST", secure: true }
+    { type: "LIST", secure: false }
     , "CREATE", "UPDATE", "DELETE"
 ])
 export class PersonResolverGenerator extends Person {
