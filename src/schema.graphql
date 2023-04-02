@@ -2,6 +2,83 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input FilterCriteriaInfo {
+  filter: IFilterCriterion
+  limit: Int
+  page: Int
+  sort: ISortCriteria
+}
+
+input IFilterCriterion {
+  filters: [IFilterCriterion!]
+  property: String
+  type: String
+  typeValue: String
+  value: String
+}
+
+input ISortCriteria {
+  column: String!
+  order: String!
+}
+
+type Mutation {
+  createUser(userInputDto: UserInputDto!): User!
+  removeUser(id: Int!): User!
+  updateUser(id: Int!, userInputDto: UserInputDto!): User!
+}
+
 type Query {
   hello: String!
+  user(id: Int!): User!
+  userFindAll(criteria: FilterCriteriaInfo): [User!]!
+  userListPage(userCriteria: FilterCriteriaInfo!): UserListPageInfoResponse!
+}
+
+type Role {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID
+  name: String!
+  updatedAt: DateTime
+  users: [User!]!
+}
+
+type User {
+  active: Boolean
+  createdAt: DateTime
+  deletedAt: DateTime
+  email: String!
+  enabled: Boolean
+  firstName: String
+  fullName: String
+  id: ID
+  lastName: String
+  password: String!
+  role: Role!
+  roleId: String!
+  updatedAt: DateTime
+}
+
+input UserInputDto {
+  active: Boolean
+  email: String!
+  enabled: Boolean
+  firstName: String
+  lastName: String
+  password: String
+  roleId: ID!
+}
+
+type UserListPageInfoResponse {
+  data: [User!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
 }

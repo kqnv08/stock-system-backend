@@ -1,0 +1,9 @@
+export enum OperationTypeEnum {
+  PURCHASE = 1,
+  SALE,
+  RESCUE,
+  SUBSCRIPTION,
+  WITHDRAWAL,
+  DEPOSIT,
+  FOREIGN_EXPENSES
+}

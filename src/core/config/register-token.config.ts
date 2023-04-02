@@ -1,0 +1,3 @@
+export const MIN_TOKEN_RANGE = 100000
+export const MAX_TOKEN_RANGE = 999999
+export const MINUTES_TO_EXPIRATION = 5

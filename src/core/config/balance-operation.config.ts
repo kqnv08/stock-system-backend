@@ -1,0 +1,3 @@
+export const MIN_VOUCHER_NUMBER = 0
+export const MAX_VOUCHER_NUMBER = 9999999999
+export const VOUCHER_LENGTH = 10
