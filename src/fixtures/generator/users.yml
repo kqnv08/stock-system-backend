@@ -1,0 +1,24 @@
+entity: User
+processor: ../processor/userProcessor
+items:
+  user1:
+    firstName: "{{name.firstName}}"
+    lastName: "{{name.lastName}}"
+    email: "admin@admin.com"
+    password: "123"
+    roleId: "@role1"
+    active: true
+  user2:
+    firstName: "{{name.firstName}}"
+    lastName: "{{name.lastName}}"
+    email: "superadmin@superadmin.com"
+    password: "123"
+    roleId: "@role3"
+    active: true
+  user3:
+    firstName: "{{name.firstName}}"
+    lastName: "{{name.lastName}}"
+    email: "customer@customer.com"
+    password: "123"
+    roleId: "@role2"
+    active: true
