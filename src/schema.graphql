@@ -28,13 +28,42 @@ input ISortCriteria {
 }
 
 type Mutation {
+  createProduct(productInputDto: ProductInputDto!): Product!
   createUser(userInputDto: UserInputDto!): User!
+  removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
+  updateProduct(id: Int!, productInputDto: ProductInputDto!): Product!
   updateUser(id: Int!, userInputDto: UserInputDto!): User!
 }
 
+type Product {
+  createdAt: DateTime
+  deletedAt: DateTime
+  description: String
+  enabled: Boolean
+  id: ID
+  name: String!
+  updatedAt: DateTime
+}
+
+input ProductInputDto {
+  enabled: Boolean
+  key: String!
+  value: String
+}
+
+type ProductListPageInfoResponse {
+  data: [Product!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
+}
+
 type Query {
-  hello: String!
+  product(id: Int!): Product!
+  productFindAll(criteria: FilterCriteriaInfo): [Product!]!
+  productListPage(productCriteria: FilterCriteriaInfo!): ProductListPageInfoResponse!
   user(id: Int!): User!
   userFindAll(criteria: FilterCriteriaInfo): [User!]!
   userListPage(userCriteria: FilterCriteriaInfo!): UserListPageInfoResponse!

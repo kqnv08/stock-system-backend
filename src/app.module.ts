@@ -8,10 +8,12 @@ import { HQLModule } from './graphql/hql.module';
 import { ConfigModule } from '@nestjs/config';
 import config from "./config/config.config";
 import { environments } from './config/environments.config';
+import { AuthModule } from './core/lib/auth/auth.module';
 
 
 @Module({
   imports: [
+
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
@@ -20,12 +22,13 @@ import { environments } from './config/environments.config';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
-      playground: true,
       sortSchema: true,
+      context: ({ extra }) => ({ extra }),
+      playground: process.env.NODE_ENV !== 'production',
     }),
     DataBaseModule,
-    HQLModule
-  ],
-  providers:[MyResolver]
+    HQLModule,
+    AuthModule,
+  ]
 })
 export class AppModule { }

@@ -27,8 +27,14 @@ import { UserModule } from 'src/graphql/sys/user/user.module';
       }
     })
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, GoogleStrategy, FacebookStrategy],
-  controllers: [AuthController]
+  controllers: [AuthController],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+     GoogleStrategy,
+      FacebookStrategy
+  ]
 })
 
 export class AuthModule { }
