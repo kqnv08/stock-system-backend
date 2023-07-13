@@ -32,8 +32,8 @@ import { UserModule } from 'src/graphql/sys/user/user.module';
     AuthService,
     LocalStrategy,
     JwtStrategy,
-     GoogleStrategy,
-      FacebookStrategy
+    // GoogleStrategy,
+    // FacebookStrategy
   ]
 })
 
