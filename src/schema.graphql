@@ -63,7 +63,7 @@ type ProductListPageInfoResponse {
 type Query {
   product(id: Int!): Product!
   productFindAll(criteria: FilterCriteriaInfo): [Product!]!
-  productListPage(productCriteria: FilterCriteriaInfo!): ProductListPageInfoResponse!
+  productListPage(productCriteria: FilterCriteriaInfo): ProductListPageInfoResponse!
   user(id: Int!): User!
   userFindAll(criteria: FilterCriteriaInfo): [User!]!
   userListPage(userCriteria: FilterCriteriaInfo!): UserListPageInfoResponse!

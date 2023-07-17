@@ -12,16 +12,17 @@ import { JwtAuthGuard } from "src/core/lib/auth/guards/jwt-auth.guard";
 import { RoleGuard } from "src/core/lib/auth/guards/roles.guard";
 import { RoleEnum } from "src/core/enums/role.enum";
 import { Roles } from "src/core/lib/auth/decorators/role.decorator";
+import { Public } from "src/core/lib/auth/decorators/public.decorator";
 
 @UseGuards(JwtAuthGuard, RoleGuard)
 @Resolver(() => Product)
 export class ProductResolver {
   constructor(private readonly engineService: ProductService) { }
 
-  // @Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
+  @Public()
   @Query(() => ProductListPageInfoResponse)
   async productListPage(
-    @Args("productCriteria", { type: () => FilterCriteriaInfo })
+    @Args("productCriteria", { type: () => FilterCriteriaInfo, nullable: true })
     productCriteria: FilterCriteriaInfo
   ) {
     return await this.engineService.listPage(productCriteria);

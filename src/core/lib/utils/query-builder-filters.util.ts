@@ -129,7 +129,7 @@ export function queryBuilderCriteria<T>(queryBuilder: SelectQueryBuilder<T>, cri
     const alias = arrayChain.length == 1 ? "c" : arrayChain[arrayChain.length - 2]
     queryBuilder.orderBy(`${alias}.${arrayChain[arrayChain.length - 1]}`, <"ASC" | "DESC">criteria.sort.order)
   } else {
-    queryBuilder.orderBy("'c.created_at'", "DESC") // default sort
+    queryBuilder.orderBy("c.created_at", "DESC") // default sort
   }
 
   return queryBuilder
