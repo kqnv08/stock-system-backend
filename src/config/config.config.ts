@@ -26,7 +26,7 @@ export default registerAs('config', () => {
     production: process.env.PRODUCTION === 'true',
     nodeEnv: process.env.NODE_ENV,
     jwtSecret: process.env.JWT_SECRET,
-    playground: process.env.PLAYGROUND === 'true',
+    playground: true,
 
     externalApi: {
       banza: {
