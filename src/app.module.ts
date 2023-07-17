@@ -24,7 +24,7 @@ import { AuthModule } from './core/lib/auth/auth.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.graphql'),
       sortSchema: true,
       context: ({ extra }) => ({ extra }),
-      playground: process.env.NODE_ENV !== 'production',
+      playground: true,
     }),
     DataBaseModule,
     HQLModule,
