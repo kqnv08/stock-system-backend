@@ -26,7 +26,7 @@ export class Product extends BaseModel {
   code?: string
 
   @Field(() => Float, { nullable: true })
-  @Column({ type: "double", nullable: true })
+  @Column({ type: "numeric", nullable: true })
   price?: number
 
   @Field(() => String, { nullable: true })
