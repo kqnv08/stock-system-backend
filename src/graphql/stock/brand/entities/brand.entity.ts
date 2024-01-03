@@ -1,14 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
 import { ObjectType, Field, ID } from "@nestjs/graphql"
 
 import { BaseModel } from "src/core/lib"
-import { Brand } from "../../brand/entities/brand.entity"
 
 @ObjectType()
 @Entity({
-  name: "stock_products",
+  name: "stock_brands",
 })
-export class Product extends BaseModel {
+export class Brand extends BaseModel {
   @Field(() => ID, { nullable: true })
   @PrimaryGeneratedColumn()
   id: number
@@ -20,14 +19,6 @@ export class Product extends BaseModel {
   @Field(() => String, { nullable: true })
   @Column({ type: "text", nullable: true })
   description?: string
-
-  @Field(() => String, { nullable: true })
-  @Column("int", { nullable: true })
-  brandId?: number
-  @Field(() => Brand, { nullable: true })
-  @ManyToOne(() => Brand, { lazy: true })
-  @JoinColumn({ name: "brand_id" })
-  brand?: Promise<Brand>
 
   @Field(() => Boolean, { nullable: true })
   @Column({ default: true })

@@ -28,7 +28,7 @@ export class ProductResolver {
     return await this.engineService.listPage(productCriteria);
   }
 
-  // @Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
+  @Public()
   @Query(() => [Product], { name: "productFindAll" })
   async findAll(
     @Args("criteria", { type: () => FilterCriteriaInfo, nullable: true })
