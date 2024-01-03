@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, JoinColumn } from "typeorm"
-import { ObjectType, Field, ID } from "@nestjs/graphql"
+import { ObjectType, Field, ID, Float } from "@nestjs/graphql"
 
 import { BaseModel } from "src/core/lib"
 import { Brand } from "../../brand/entities/brand.entity"
@@ -20,6 +20,14 @@ export class Product extends BaseModel {
   @Field(() => String, { nullable: true })
   @Column({ type: "text", nullable: true })
   description?: string
+
+  @Field(() => String, { nullable: true })
+  @Column({ type: "text", nullable: true })
+  code?: string
+
+  @Field(() => Float, { nullable: true })
+  @Column({ type: "double", nullable: true })
+  price?: number
 
   @Field(() => String, { nullable: true })
   @Column("int", { nullable: true })
