@@ -35,7 +35,7 @@ export class ProductService extends BaseService<Product> {
         }
       });
 
-      return { success: true }
+      return { success: true,error:null }
     } catch (error) {
       return {success:false,error:error?.message}
     }
