@@ -24,6 +24,12 @@ input FilterCriteriaInfo {
   sort: ISortCriteria
 }
 
+type GenericResult {
+  error: String
+  success: Boolean!
+  successData: String
+}
+
 input IFilterCriterion {
   filters: [IFilterCriterion!]
   property: String
@@ -40,6 +46,7 @@ input ISortCriteria {
 type Mutation {
   createProduct(productInputDto: ProductInputDto!): Product!
   createUser(userInputDto: UserInputDto!): User!
+  loadProduct: GenericResult!
   removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
   updateProduct(id: Int!, productInputDto: ProductInputDto!): Product!

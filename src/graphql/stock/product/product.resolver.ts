@@ -13,6 +13,7 @@ import { RoleGuard } from "src/core/lib/auth/guards/roles.guard";
 import { RoleEnum } from "src/core/enums/role.enum";
 import { Roles } from "src/core/lib/auth/decorators/role.decorator";
 import { Public } from "src/core/lib/auth/decorators/public.decorator";
+import { GenericResult } from "src/core/lib/interfaces/generic-result.interface";
 
 @UseGuards(JwtAuthGuard, RoleGuard)
 @Resolver(() => Product)
@@ -62,5 +63,11 @@ export class ProductResolver {
   @Mutation(() => Product)
   async removeProduct(@Args("id", { type: () => Int }) id: number) {
     return await this.engineService.remove(id);
+  }
+
+  @Public()
+  @Mutation(() => GenericResult)
+  async loadProduct() {
+    return await this.engineService.loadProduct();
   }
 }
