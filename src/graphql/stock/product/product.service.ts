@@ -37,7 +37,7 @@ export class ProductService extends BaseService<Product> {
 
       return { success: true }
     } catch (error) {
-      console.log(error)
+      return {success:false,error:error?.message}
     }
   }
 
