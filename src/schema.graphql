@@ -12,6 +12,40 @@ type Brand {
   updatedAt: DateTime
 }
 
+input BrandInputDto {
+  enabled: Boolean
+  key: String!
+  value: String
+}
+
+type BrandListPageInfoResponse {
+  data: [Brand!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
+}
+
+type Category {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID
+  name: String
+  updatedAt: DateTime
+}
+
+input CategoryInputDto {
+  name: String!
+}
+
+type CategoryListPageInfoResponse {
+  data: [Category!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -44,13 +78,29 @@ input ISortCriteria {
 }
 
 type Mutation {
+  createBrand(brandInputDto: BrandInputDto!): Brand!
+  createCategory(categoryInputDto: CategoryInputDto!): Category!
   createProduct(productInputDto: ProductInputDto!): Product!
+  createSale(saleInputDto: NewSaleInputDto!): GenericResult!
+  createSaleDetail(saleDetailInputDto: SaleDetailInputDto!): SaleDetail!
   createUser(userInputDto: UserInputDto!): User!
   loadProduct: GenericResult!
+  removeBrand(id: Int!): Brand!
+  removeCategory(id: Int!): Category!
   removeProduct(id: Int!): Product!
+  removeSale(id: ID!): Sale!
+  removeSaleDetail(id: Int!): SaleDetail!
   removeUser(id: Int!): User!
+  updateBrand(brandInputDto: BrandInputDto!, id: Int!): Brand!
+  updateCategory(categoryInputDto: CategoryInputDto!, id: Int!): Category!
   updateProduct(id: Int!, productInputDto: ProductInputDto!): Product!
+  updateSale(id: ID!, saleInputDto: SaleInputDto!): Sale!
+  updateSaleDetail(id: Int!, saleDetailInputDto: SaleDetailInputDto!): SaleDetail!
   updateUser(id: Int!, userInputDto: UserInputDto!): User!
+}
+
+input NewSaleInputDto {
+  saleDetails: [SaleDetailInputDto!]!
 }
 
 type Product {
@@ -82,9 +132,21 @@ type ProductListPageInfoResponse {
 }
 
 type Query {
+  brand(id: Int!): Brand!
+  brandFindAll(criteria: FilterCriteriaInfo): [Brand!]!
+  brandListPage(brandCriteria: FilterCriteriaInfo): BrandListPageInfoResponse!
+  category(id: Int!): Category!
+  categoryFindAll(criteria: FilterCriteriaInfo): [Category!]!
+  categoryListPage(categoryCriteria: FilterCriteriaInfo!): CategoryListPageInfoResponse!
   product(id: Int!): Product!
   productFindAll(criteria: FilterCriteriaInfo): [Product!]!
   productListPage(productCriteria: FilterCriteriaInfo): ProductListPageInfoResponse!
+  sale(id: ID!): Sale!
+  saleDetail(id: Int!): SaleDetail!
+  saleDetailFindAll(criteria: FilterCriteriaInfo): [SaleDetail!]!
+  saleDetailListPage(saleDetailCriteria: FilterCriteriaInfo!): SaleDetailListPageInfoResponse!
+  saleFindAll(criteria: FilterCriteriaInfo): [Sale!]!
+  saleListPage(saleCriteria: FilterCriteriaInfo!): SaleListPageInfoResponse!
   user(id: Int!): User!
   userFindAll(criteria: FilterCriteriaInfo): [User!]!
   userListPage(userCriteria: FilterCriteriaInfo!): UserListPageInfoResponse!
@@ -97,6 +159,57 @@ type Role {
   name: String!
   updatedAt: DateTime
   users: [User!]!
+}
+
+type Sale {
+  createdAt: DateTime
+  deletedAt: DateTime
+  details: [SaleDetail!]!
+  id: ID
+  name: String
+  total: Float!
+  updatedAt: DateTime
+}
+
+type SaleDetail {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: ID
+  price: Float
+  product: Product
+  productId: String
+  quantity: Int
+  sale: Sale
+  saleId: String
+  total: Float
+  updatedAt: DateTime
+}
+
+input SaleDetailInputDto {
+  price: Float!
+  productId: ID!
+  quantity: Int!
+  saleId: ID
+}
+
+type SaleDetailListPageInfoResponse {
+  data: [SaleDetail!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
+}
+
+input SaleInputDto {
+  name: String!
+}
+
+type SaleListPageInfoResponse {
+  data: [Sale!]
+  limit: Int
+  page: Int
+  totalPages: Int
+  totalRecords: Int
 }
 
 type User {

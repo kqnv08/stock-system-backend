@@ -72,7 +72,7 @@ export function queryBuilderCriteria<T>(queryBuilder: SelectQueryBuilder<T>, cri
               queryCustom = `${alias}.${arrayChain[arrayChain.length - 1]} <= :${propertyAlias}`
               break
             case FilterTypesEnum.Like:
-              queryCustom = `${alias}.${arrayChain[arrayChain.length - 1]} like :${propertyAlias}`
+              queryCustom = `LOWER(${alias}.${arrayChain[arrayChain.length - 1]}) like LOWER(:${propertyAlias})`
               filterValue = `%${filterValue}%`
               break
             // break

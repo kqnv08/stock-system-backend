@@ -1,12 +1,9 @@
 import { Module } from "@nestjs/common"
 
-import { SysModule } from "./sys/sys.module"
 import { StockModule } from "./stock/stock.module"
+import { SysModule } from "./sys/sys.module"
 
 @Module({
-  imports: [
-    SysModule,
-    StockModule
-  ],
+  imports: [StockModule, SysModule],
 })
-export class HQLModule { }
+export class HQLModule {}
