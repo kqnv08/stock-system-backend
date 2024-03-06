@@ -24,14 +24,14 @@ export class SaleService extends BaseService<Sale> {
   async createSale(data: NewSaleInputDto, connect?: QueryRunner): Promise<GenericResult> {
     try {
       const newSale = await this.engineRepository.save({})
-      
+
       data.saleDetails.forEach(async saleDetail => {
         saleDetail.saleId = newSale.id.toString()
         await this.saleDetailRepository.create(saleDetail)
       });
 
 
-      return { success: true }
+      return { success: true, successData: newSale.id.toString() }
     } catch (error) {
       return { success: false }
     }
