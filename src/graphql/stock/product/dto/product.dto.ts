@@ -1,17 +1,17 @@
-import { InputType, Field } from "@nestjs/graphql"
+import { InputType, Field, Float } from "@nestjs/graphql"
 import { IsNotEmpty, IsOptional } from "class-validator"
 
 @InputType()
 export class ProductInputDto {
-  @IsNotEmpty()
-  @Field(() => String)
-  key: string
 
-  @IsNotEmpty()
   @Field(() => String, { nullable: true })
-  value: string
+  name?: string
 
-  @IsOptional()
-  @Field(() => Boolean, { nullable: true })
-  enabled: boolean
+
+  @Field(() => String, { nullable: true })
+  code?: string
+
+
+  @Field(() => Float, { nullable: true })
+  price?: number
 }

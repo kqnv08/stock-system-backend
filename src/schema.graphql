@@ -118,9 +118,9 @@ type Product {
 }
 
 input ProductInputDto {
-  enabled: Boolean
-  key: String!
-  value: String
+  code: String
+  name: String
+  price: Float
 }
 
 type ProductListPageInfoResponse {

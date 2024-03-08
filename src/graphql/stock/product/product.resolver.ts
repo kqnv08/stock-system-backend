@@ -44,7 +44,7 @@ export class ProductResolver {
     return await this.engineService.findOne(id);
   }
 
-  // @Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
+  @Public()
   @Mutation(() => Product)
   async createProduct(@Args("productInputDto") productInputDto: ProductInputDto) {
     return await this.engineService.create(productInputDto);
