@@ -93,7 +93,7 @@ type Mutation {
   removeUser(id: Int!): User!
   updateBrand(brandInputDto: BrandInputDto!, id: Int!): Brand!
   updateCategory(categoryInputDto: CategoryInputDto!, id: Int!): Category!
-  updateProduct(id: Int!, productInputDto: ProductInputDto!): Product!
+  updateProduct(id: ID!, productInputDto: ProductInputDto!): Product!
   updateSale(id: ID!, saleInputDto: SaleInputDto!): Sale!
   updateSaleDetail(id: Int!, saleDetailInputDto: SaleDetailInputDto!): SaleDetail!
   updateUser(id: Int!, userInputDto: UserInputDto!): User!

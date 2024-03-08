@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from "@nestjs/graphql";
+import { Resolver, Query, Mutation, Args, Int, ID } from "@nestjs/graphql";
 
 import { FilterCriteriaInfo } from "src/core/lib";
 
@@ -50,10 +50,10 @@ export class ProductResolver {
     return await this.engineService.create(productInputDto);
   }
 
-  // @Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
+  @Public()
   @Mutation(() => Product)
   async updateProduct(
-    @Args("id", { type: () => Int }) id: number,
+    @Args("id", { type: () => ID }) id: number | string,
     @Args("productInputDto") productInputDto: ProductInputDto
   ) {
     return await this.engineService.update(id, productInputDto);
