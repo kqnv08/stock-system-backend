@@ -30,8 +30,8 @@ export class ProductService extends BaseService<Product> {
       const products: Product[] = [];
 
       worksheet.eachRow((row, rowNumber) => {
-        if (rowNumber >2) {;
-          this.engineRepository.save({ name: row.values[1], code: row.values[2], price: row.values[3] ??0 })
+        if (rowNumber >1) {;
+          this.engineRepository.save({ name: row.values[2], code: row.values[1], price: row.values[7] ??0 })
         }
       });
 
